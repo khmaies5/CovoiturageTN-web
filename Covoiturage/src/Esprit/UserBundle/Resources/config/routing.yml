@@ -1,0 +1,52 @@
+esprit_user_homepage:
+    path:     /Home
+    defaults: { _controller: EspritUserBundle:Default:index }
+
+Qui_sommes_nous_page:
+    path:     /QuiSommesNous
+    defaults: { _controller: EspritUserBundle:Default:QuiSommesNous }
+
+Comment_ca_marche_page:
+    path:     /CommentçaMarche
+    defaults: { _controller: EspritUserBundle:Default:CommentCaMarche }
+
+Nous_Contacter_page:
+    path:     /NousContacter
+    defaults: { _controller: EspritUserBundle:Default:NousContacter }
+Proposer_Trajet_page:
+    path:     /ProposerTrajet
+    defaults: { _controller: EspritUserBundle:Annonce:ProposerTrajet }
+
+Les_Trajets_page:
+    path:     /TousLesTrajets
+    defaults: { _controller: EspritUserBundle:Annonce:ListTrajets }
+Les_groupes_page:
+    path:     /TousLesGroupes
+    defaults: { _controller: EspritUserBundle:Groupe:listGroupes }
+profil_page:
+    path:     /Profil
+    defaults: { _controller: EspritUserBundle:User:profil }
+Mes_Annonces_page:
+    path:     /MesAnnonces
+    defaults: { _controller: EspritUserBundle:Annonce:MesAnnonces }
+Mes_reservations_page:
+    path:     /MesReservations
+    defaults: { _controller: EspritUserBundle:Reservation:MesReservations }
+Mes_Alertes_page:
+    path:     /MesAlertes
+    defaults: { _controller: EspritUserBundle:Alerte:MesAlertes }
+Mes_groupes_page:
+    path:     /MesGroupes
+    defaults: { _controller: EspritUserBundle:Groupe:MesGroupes }
+Mes_invitations_page:
+    path:     /MesInvitations
+    defaults: { _controller: EspritUserBundle:Invitation:MesInvitations }
+Mes_users_Fav_page:
+    path:     /MesUsersFav
+    defaults: { _controller: EspritUserBundle:UserFav:list }
+Mes_pubs_Fav_page:
+    path:     /MesPubsFav
+    defaults: { _controller: EspritUserBundle:PubFav:list }
+redirect:
+    path:     /check_action
+    defaults: { _controller: EspritUserBundle:Default:redirectIfAlreadyLoggedIn }

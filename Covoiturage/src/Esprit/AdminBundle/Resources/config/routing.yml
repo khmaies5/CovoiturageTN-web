@@ -1,0 +1,38 @@
+esprit_admin_homepage:
+    path:     /HomeAdmin
+    defaults: { _controller: EspritAdminBundle:Default:index }
+profil_pageadmin:
+    path:     /ProfilAdmin
+    defaults: { _controller: EspritAdminBundle:Admin:profil }
+deconnection:
+    path:     /DeconnexionAdmin
+    defaults: { _controller: EspritAdminBundle:Admin:deconnexion }
+Tous_payements_page:
+    path:     /TousLesPayements
+    defaults: { _controller: EspritAdminBundle:Payement:list }
+Payement_attente_page:
+    path:     /LesPayementsAttente
+    defaults: { _controller: EspritAdminBundle:Payement:listAttente }
+
+Toutes_signalisations_page:
+    path:     /ToutesLesSignialisations
+    defaults: { _controller: EspritAdminBundle:Signalisation:list }
+Les_signalisations_Attente_page:
+    path:     /LesSignialisationsAttente
+    defaults: { _controller: EspritAdminBundle:Signalisation:listAttente }
+List_Voiture_page:
+    path:     /ListDesVoitures
+    defaults: { _controller: EspritAdminBundle:Voiture:list}
+
+List_Tous_Les_groupes_page:
+    path:     /ListTousLesGroupes
+    defaults: { _controller: EspritAdminBundle:Groupe:listAll }
+Les_groupes_Signalè_page:
+    path:     /LesGroupesAttente
+    defaults: { _controller: EspritAdminBundle:Groupe:listAttente}
+Stat_page:
+    path:     /Stat
+    defaults: { _controller: EspritAdminBundle:Statistique:affichage}
+List_Alerte_page:
+    path:     /ListAlertes
+    defaults: { _controller: EspritAdminBundle:Alerte:affichage}
