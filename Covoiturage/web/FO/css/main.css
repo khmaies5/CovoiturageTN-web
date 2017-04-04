@@ -1593,6 +1593,10 @@ Blog Default
   padding: 20px 0;
 }
 
+#annonce:hover{
+  background-color: #ebebf2;
+}
+
 .timeline-date .btn-common{
   font-size: 18px;
   color: #4a4a4a;

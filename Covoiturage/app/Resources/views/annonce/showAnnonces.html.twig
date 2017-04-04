@@ -1,0 +1,188 @@
+{% extends 'annonce/index.html.twig' %}
+{% block head %}
+
+    <style>
+
+
+        .gi-2x{font-size: 1em;}
+        .gi-3x{font-size: 3em;}
+        .gi-4x{font-size: 4em;}
+        .gi-5x{font-size: 5em;}
+    </style>
+
+{% endblock %}
+
+
+{% block body %}
+    <section id="blog" class="padding-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-5">
+                    <div class="sidebar blog-sidebar">
+                        <div class="sidebar-item  recent">
+                            <h3>Comments</h3>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <a href="#"><img src="{{ asset('FO/images/portfolio/project1.jpg') }}" alt=""></a>
+                                </div>
+                                <div class="media-body">
+                                    <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
+                                    <p>posted on  07 March 2014</p>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <a href="#"><img src="{{ asset('FO/images/portfolio/project2.jpg')}}" alt=""></a>
+                                </div>
+                                <div class="media-body">
+                                    <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
+                                    <p>posted on  07 March 2014</p>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <a href="#"><img src="{{ asset('FO/images/portfolio/project3.jpg')}}" alt=""></a>
+                                </div>
+                                <div class="media-body">
+                                    <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
+                                    <p>posted on  07 March 2014</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sidebar-item categories">
+                            <h3>Categories</h3>
+                            <ul class="nav navbar-stacked">
+                                <li><a href="#">Lorem ipsum<span class="pull-right">(1)</span></a></li>
+                                <li class="active"><a href="#">Dolor sit amet<span class="pull-right">(8)</span></a></li>
+                                <li><a href="#">Adipisicing elit<span class="pull-right">(4)</span></a></li>
+                                <li><a href="#">Sed do<span class="pull-right">(9)</span></a></li>
+                                <li><a href="#">Eiusmod<span class="pull-right">(3)</span></a></li>
+                                <li><a href="#">Mockup<span class="pull-right">(4)</span></a></li>
+                                <li><a href="#">Ut enim ad minim <span class="pull-right">(2)</span></a></li>
+                                <li><a href="#">Veniam, quis nostrud <span class="pull-right">(8)</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="sidebar-item tag-cloud">
+                            <h3>Tag Cloud</h3>
+                            <ul class="nav nav-pills">
+                                <li><a href="#">Corporate</a></li>
+                                <li><a href="#">Joomla</a></li>
+                                <li><a href="#">Abstract</a></li>
+                                <li><a href="#">Creative</a></li>
+                                <li><a href="#">Business</a></li>
+                                <li><a href="#">Product</a></li>
+                            </ul>
+                        </div>
+                        <div class="sidebar-item popular">
+                            <h3>Latest Photos</h3>
+                            <ul class="gallery">
+                                <li><a href="#"><img src="{{ asset('FO/images/portfolio/popular1.jpg')}}" alt=""></a></li>
+                                <li><a href="#"><img src="{{ asset('FO/images/portfolio/popular2.jpg')}}" alt=""></a></li>
+                                <li><a href="#"><img src="{{ asset('FO/images/portfolio/popular3.jpg')}}" alt=""></a></li>
+                                <li><a href="#"><img src="{{ asset('FO/images/portfolio/popular4.jpg')}}" alt=""></a></li>
+                                <li><a href="#"><img src="{{ asset('FO/images/portfolio/popular5.jpg')}}" alt=""></a></li>
+                                <li><a href="#"><img src="{{ asset('FO/images/portfolio/popular1.jpg')}}" alt=""></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-7">
+                    <div class="row">
+                        <div class="col s4 offset-s4">
+                            <button class="btn waves-effect waves-light " onclick="window.location.href = '{{ path('annonce_new') }}'">Nouvelle Annonce
+                                <i class="material-icons right">library_add</i>
+                            </button>
+
+                        </div>
+
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                        {% for annonce in annonces %}
+                        <div class="col-md-12 col-sm-12">
+                            <div class="single-blog two-column">
+
+                                <div class="post-thumb">
+
+
+                                </div>
+                                <div id="annonce" class="post-content overflow"  onclick="window.location.href = '{{ path('annonce_show', { 'id': annonce.idAnnonce }) }}'">
+                                    <h5 class="post-title bold"><a href="{{ path('annonce_show', { 'id': annonce.idAnnonce }) }}">{{ annonce.lieuDepart  }} <span style="font-size: 80%;" class="glyphicon glyphicon-arrow-right gi-2x" aria-hidden="true"></span> {{ annonce.lieuArrive }}</a></h5>
+                                    <div class="col-md-4">
+                                    <div class="pull-left center">
+                                        <a href="{{ path('annonce_show', { 'id': annonce.idAnnonce }) }}"><img style="height:100px;width:auto;position: static;" src="{{ asset('AnnonceImg/')}}{{ annonce.idUser.photoProfil }}" class="img-circle center" alt=""></a>
+                                        <h3 class="post-author center"><a href="#">Posted by {{ annonce.idUser.nom }} {{ annonce.idUser.prenom }}<br>{{ annonce.idUser.nivExperience }}</a></h3>
+                                    </div>
+                                    </div>
+                                    <div class="post-overlay">
+                                        <span class="uppercase"><a href="#">{{ annonce.tripDate |date("d") }} <br><small>{{ annonce.tripDate |date("M") }}</small></a></span>
+                                    </div>
+<br>
+<div class="col-md-8">
+
+    <div class="center">
+      <div class="col-md-4" data-countdown="{{ annonce.tripDate |date("m/d/Y H:i") }}">
+      </div>
+        <div class="col-md-4 col-md-offset-4">
+            <h5> <small> Distance: </small>{{ annonce.distance }}</h5>
+        </div><br>
+
+        <div class="col-md-4">
+            <h5><small> Prix / Personne:</small> {{ annonce.prix }}</h5>
+        </div>
+        <div class="col-md-4 col-md-offset-4">
+            <h5><small>Temps Restant:</small>     {{ annonce.nbrPersonne }}</h5></div>
+
+
+
+    </div>
+</div>
+
+                                </div>
+                                <div class="post-bottom overflow">
+                                    <ul class="nav navbar-nav post-nav right">
+                                        <li><a href="{{ path('annonce_show', { 'id': annonce.idAnnonce }) }}" class="read-more">View More</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+
+                        </div>
+
+                        {% endfor %}
+                    </div>
+                    <div class="blog-pagination">
+                        <ul class="pagination">
+                            <li><a href="#">left</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li class="active"><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">6</a></li>
+                            <li><a href="#">7</a></li>
+                            <li><a href="#">8</a></li>
+                            <li><a href="#">9</a></li>
+                            <li><a href="#">right</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="{{ asset('FO/js/jquery.countdown.js')}}"></script>
+    <script>
+
+        $('[data-countdown]').each(function() {
+            var $this = $(this), finalDate = $(this).data('countdown');
+            $this.countdown(finalDate, function(event) {
+                $this.html(event.strftime('<h6>Temps Restant:<br>%D Jours %H:%M:%S</h6>'));
+            });
+        });
+
+    </script>
+{% endblock %}
+

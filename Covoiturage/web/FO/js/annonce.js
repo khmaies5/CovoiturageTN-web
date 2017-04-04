@@ -13,6 +13,15 @@ $(document).ready(function () {
      document.getElementById('switch2').addEventListener('click', changeCrit2);
      document.getElementById('switch1').addEventListener('click', changeCrit1);*/
 //esprit_userbundle_annonce_critere
+
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+            autoclose: true,
+            todayBtn: true,
+            startDate: new Date(),
+            minuteStep: 10
+        });
+    });
 });
 
 function testing() {
@@ -50,14 +59,7 @@ function changeCrit1() {
 $(document).ready(function() {
     $('select').material_select();
 });
-$(function () {
-    $('#datetimepicker1').datetimepicker({
-        autoclose: true,
-        todayBtn: true,
-        startDate: new Date(),
-        minuteStep: 10
-    });
-});
+
 /* $(".form_datetime").datetimepicker({
  format: "dd MM yyyy - hh:ii",
  autoclose: true,
@@ -92,8 +94,6 @@ $(function () {
  *map code
  **/
 
-// This example requires the Places library. Include the libraries=places
-// parameter when you first load the API. For example:
 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
 function initMap() {

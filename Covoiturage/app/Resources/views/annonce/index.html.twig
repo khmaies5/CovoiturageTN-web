@@ -1,206 +1,74 @@
 {% extends 'base.html.twig' %}
-{% block head %}
 
-    <style>
-
-        html, body, .block {
-            height: 50%;
-        }
-    </style>
-
-{% endblock %}
 {% block body %}
 
-    <h1>Annonces list</h1>
-
-    <!-- <table>
-        <thead>
-            <tr>
-                <th>Idannonce</th>
-                <th>Tripdate</th>
-                <th>Annoncedate</th>
-                <th>Lieudepart</th>
-                <th>Lieuarrive</th>
-                <th>Type</th>
-                <th>Nbrpersonne</th>
-                <th>Prix</th>
-                <th>Critere</th>
-                <th>Distance</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-
-        {% for annonce in annonces %}
-            <tr>
-                <td><a href="{{ path('annonce_show', { 'id': annonce.idAnnonce }) }}">{{ annonce.idAnnonce }}</a></td>
-                <td>{% if annonce.tripDate %}{{ annonce.tripDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if annonce.annonceDate %}{{ annonce.annonceDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ annonce.lieuDepart }}</td>
-                <td>{{ annonce.lieuArrive }}</td>
-                <td>{{ annonce.type }}</td>
-                <td>{{ annonce.nbrPersonne }}</td>
-                <td>{{ annonce.prix }}</td>
-                <td>{{ annonce.critere }}</td>
-                <td>{{ annonce.distance }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('annonce_show', { 'id': annonce.idAnnonce }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('annonce_edit', { 'id': annonce.idAnnonce }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>-->
-    <style>
-        #profile {
-            height:100px;
-            width: auto;
-            position: static;
-        }
-
-        .vertical-divider-d{
-            background: #DDDDDD;
-            bottom: 0;
-            content: " ";
-            margin-left: -10px;
-            position: absolute;
-            top: 0;
-            width: 1px;
-        }
-
-
-        .vertical-divider{
-            clear: both;
-            position: relative;
-        }
-
-        .vertical-divider:after {
-            clear: both;
-            content: " ";
-            display: block;
-            height: 0;
-            visibility: hidden;
-        }
-
-
-        .vertical-divider .te .column:not(:first-child):after, .vertical-divider .columns:not(:first-child):after{
-            background: #DDDDDD;
-            bottom: 0;
-            content: " ";
-            margin-left: -10px;
-            position: absolute;
-            top: 0;
-            width: 1px;
-        }
-
-        .card:hover{
-            background-color: #f5f5f5;
-        }
-        /* Very simple grid for example */
-        .container-d { position: relative; width: 960px; margin: 20px auto; padding: 0; }
-
-        .container-d .column, .container-d .columns { float: left; display: inline; margin-left: 10px; margin-right: 10px; }
-
-        .container-d .one-third.column { width: 100px; }
-
-        .container-d .two-thirds.column { width: 620px; }
-        .container-d .first-half.column {width: 50%;}
-        .container-d .second-half.column{width: 50%;}
-
-    </style>
-    <div class="container" id="collection">
-        <div class="row">
-            <div class="col s4 offset-s4">
-                <button class="btn waves-effect waves-light " onclick="window.location.href = '{{ path('annonce_new') }}'">Nouvelle Annonce
-                    <i class="material-icons right">library_add</i>
-                </button>
+    <div class="col-md-3 col-sm-5">
+        <div class="sidebar blog-sidebar">
+            <div class="sidebar-item  recent">
+                <h3>Comments</h3>
+                <div class="media">
+                    <div class="pull-left">
+                        <a href="#"><img src="{{ asset('FO/images/portfolio/project1.jpg') }}" alt=""></a>
+                    </div>
+                    <div class="media-body">
+                        <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
+                        <p>posted on  07 March 2014</p>
+                    </div>
+                </div>
+                <div class="media">
+                    <div class="pull-left">
+                        <a href="#"><img src="{{ asset('FO/images/portfolio/project2.jpg')}}" alt=""></a>
+                    </div>
+                    <div class="media-body">
+                        <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
+                        <p>posted on  07 March 2014</p>
+                    </div>
+                </div>
+                <div class="media">
+                    <div class="pull-left">
+                        <a href="#"><img src="{{ asset('FO/images/portfolio/project3.jpg')}}" alt=""></a>
+                    </div>
+                    <div class="media-body">
+                        <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
+                        <p>posted on  07 March 2014</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-item categories">
+                <h3>Categories</h3>
+                <ul class="nav navbar-stacked">
+                    <li><a href="#">Lorem ipsum<span class="pull-right">(1)</span></a></li>
+                    <li class="active"><a href="#">Dolor sit amet<span class="pull-right">(8)</span></a></li>
+                    <li><a href="#">Adipisicing elit<span class="pull-right">(4)</span></a></li>
+                    <li><a href="#">Sed do<span class="pull-right">(9)</span></a></li>
+                    <li><a href="#">Eiusmod<span class="pull-right">(3)</span></a></li>
+                    <li><a href="#">Mockup<span class="pull-right">(4)</span></a></li>
+                    <li><a href="#">Ut enim ad minim <span class="pull-right">(2)</span></a></li>
+                    <li><a href="#">Veniam, quis nostrud <span class="pull-right">(8)</span></a></li>
+                </ul>
+            </div>
+            <div class="sidebar-item tag-cloud">
+                <h3>Tag Cloud</h3>
+                <ul class="nav nav-pills">
+                    <li><a href="#">Corporate</a></li>
+                    <li><a href="#">Joomla</a></li>
+                    <li><a href="#">Abstract</a></li>
+                    <li><a href="#">Creative</a></li>
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">Product</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-item popular">
+                <h3>Latest Photos</h3>
+                <ul class="gallery">
+                    <li><a href="#"><img src="{{ asset('FO/images/portfolio/popular1.jpg')}}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ asset('FO/images/portfolio/popular2.jpg')}}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ asset('FO/images/portfolio/popular3.jpg')}}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ asset('FO/images/portfolio/popular4.jpg')}}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ asset('FO/images/portfolio/popular5.jpg')}}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ asset('FO/images/portfolio/popular1.jpg')}}" alt=""></a></li>
+                </ul>
             </div>
         </div>
-
-        {% for annonce in annonces %}
-
-            <!-- <div class="card">
-                <div class="row">
-                    <div class="col s1 center">
-                        <img id="profile" src="{{ asset('AnnonceImg/')}}{{ annonce.idUser.photoProfil }}" alt="" class="circle"><br>{{ annonce.idUser.nom }}&nbsp;{{ annonce.idUser.prenom }}<br>{{ annonce.idUser.nivExperience }}
-
-                        <a class="btn-floating btn-small waves-effect waves-light red"><i style="font-size: medium" class="material-icons">email</i></a>
-                        <a class="btn-floating btn-small waves-effect waves-light red"><i style="font-size: medium" class="material-icons">email</i></a>
-
-                    </div>
-                    <div class="col s4 offset-s2">
-                        <div class="vertical-divider"></div>
-                    </div>
-                    <div class="col s1">
-                        <span class="title"><h5>{{ annonce.lieuDepart }} <i class="material-icons" style="font-size: 15px">trending_flat</i> {{ annonce.lieuArrive }}</h5>  </span>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s4 offset-s4">
-                        <p>test</p>
-                    </div>
-                </div>
-
-            </div>-->
-
-
-
-            <ul class="card" >
-                <li >
-                    <div class="container-d vertical-divider">
-                        <div  class="column one-third te">
-                            <img id="profile" src="{{ asset('AnnonceImg/')}}{{ annonce.idUser.photoProfil }}" alt="" class="circle"><br>{{ annonce.idUser.nom }}&nbsp;{{ annonce.idUser.prenom }}<br>{{ annonce.idUser.nivExperience }}
-
-                            <a class="btn-floating btn-small waves-effect waves-light red"><i style="font-size: medium" class="material-icons">email</i></a>
-                            <a class="btn-floating btn-small waves-effect waves-light red"><i style="font-size: medium" class="material-icons">email</i></a>
-
-
-
-                        </div>
-                        <div class="column two-thirds te" onclick="window.location.href = '{{ path('annonce_show', { 'id': annonce.idAnnonce }) }}'">
-                            <span class="title"><h5>{{ annonce.lieuDepart  }} <i class="material-icons" style="font-size: 15px">trending_flat</i> {{ annonce.lieuArrive }}</h5>  </span>
-
-                            <div class="column first-half">
-                                <div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Date: {{ annonce.tripDate |date("m/d/Y H:i") }}" data-countdown="{{ annonce.tripDate |date("m/d/Y H:i") }}"></div>
-
-                                <p>Places Disponibles:     {{ annonce.nbrPersonne }} <br>
-
-                            </p>   </div>
-                            <div class="col s4 offset-s4"><p>Distance: {{ annonce.distance }}<br>
-                                    Prix / Personne: {{ annonce.prix }}<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
-
-                                </p></div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
-        {% endfor %}
-
-
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="{{ asset('materialize/js/materialize.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('FO/js/jquery.countdown.js')}}"></script>
-        <script>
-            $(document).ready(function() {
-                Materialize.showStaggeredList('#collection')
-            });
-            $('[data-countdown]').each(function() {
-                var $this = $(this), finalDate = $(this).data('countdown');
-                $this.countdown(finalDate, function(event) {
-                    $this.html(event.strftime('%D Jours %H:%M:%S'));
-                });
-            });
-            $(document).ready(function(){
-                $('.tooltipped').tooltip({delay: 50});
-            });
-        </script>
     </div>
 {% endblock %}

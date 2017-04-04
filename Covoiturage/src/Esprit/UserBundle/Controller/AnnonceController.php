@@ -26,7 +26,7 @@ class AnnonceController extends Controller
 
         $annonces = $em->getRepository('EspritUserBundle:Annonce')->findAll();
 
-        return $this->render('annonce/index.html.twig', array(
+        return $this->render('annonce/showAnnonces.html.twig', array(
             'annonces' => $annonces,
         ));
     }
