@@ -7,6 +7,17 @@
  */
 var test;
 
+function calculePrix(distance) {
+//distance id input distance
+//price id input distance
+
+    var prix =distance / 125 * 8 ;
+var prixslider = document.getElementById("esprit_userbundle_annonce_prix");
+
+    prixslider.value = prix ;
+    alert("Nous avons calculé le meilleur prix par personne pour vous, vous pouvez le changer si vous le souhaitez");
+}
+
 $(document).ready(function () {
     /* document.getElementById('switch4').addEventListener('click', changeCrit4);
      document.getElementById('switch3').addEventListener('click', changeCrit3);
@@ -14,13 +25,26 @@ $(document).ready(function () {
      document.getElementById('switch1').addEventListener('click', changeCrit1);*/
 //esprit_userbundle_annonce_critere
 
-    $(function () {
+    /*$(function () {
         $('#datetimepicker1').datetimepicker({
             autoclose: true,
             todayBtn: true,
             startDate: new Date(),
             minuteStep: 10
         });
+    });*/
+});
+
+$(function () {
+    $('.form_datetime').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1
     });
 });
 
@@ -54,7 +78,7 @@ function changeCrit2() {
 function changeCrit1() {
     if( document.getElementById('switch1').checked){
         test += ';fun_talking';
-    }else test += ';little_talking';
+    }else test += ';littletalking';
 }
 $(document).ready(function() {
     $('select').material_select();
@@ -104,24 +128,52 @@ function initMap() {
 
         zoom: 6
     });
+    if(document.getElementById('esprit_userbundle_annonce_lieuArrive').value!= "" || document.getElementById('esprit_userbundle_annonce_lieuDepart').value!= "") {
+        {
+            var directionsService = new google.maps.DirectionsService;
+            var directionsDisplay = new google.maps.DirectionsRenderer;
+            directionsDisplay.setMap(map);
 
-    new AutocompleteDirectionsHandler(map);
+            var from = document.getElementById('esprit_userbundle_annonce_lieuDepart').value;
+            var to = document.getElementById('esprit_userbundle_annonce_lieuArrive').value;
+            directionsService.route({
+                origin: from,
+                destination: to,
+                travelMode: 'DRIVING'
+            }, function(response, status) {
+                if (status === 'OK') {
+                    directionsDisplay.setDirections(response);
+
+                } else {
+                    window.alert('Directions request failed due to ' + status);
+                }
+            });
+        }
+    }
+   else new AutocompleteDirectionsHandler(map);
+
+
+
 }
+
+
 
 /**
  * @constructor
  */
 function AutocompleteDirectionsHandler(map) {
     this.map = map;
-    this.originPlaceId = null;
+     this.originPlaceId = null;
     this.destinationPlaceId = null;
     this.travelMode = 'DRIVING';
     var originInput = document.getElementById('esprit_userbundle_annonce_lieuDepart');
+
     var destinationInput = document.getElementById('esprit_userbundle_annonce_lieuArrive');
     var modeSelector = document.getElementById('mode-selector');
     this.directionsService = new google.maps.DirectionsService;
     this.directionsDisplay = new google.maps.DirectionsRenderer;
     this.directionsDisplay.setMap(map);
+
 
     var originAutocomplete = new google.maps.places.Autocomplete(
         originInput, {placeIdOnly: true});
@@ -138,6 +190,8 @@ function AutocompleteDirectionsHandler(map) {
 
 
 
+
+
 AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
     var me = this;
     autocomplete.bindTo('bounds', this.map);
@@ -149,6 +203,7 @@ AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(aut
         }
         if (mode === 'ORIG') {
             me.originPlaceId = place.place_id;
+
         } else {
             me.destinationPlaceId = place.place_id;
         }
@@ -158,8 +213,30 @@ AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(aut
 };
 
 AutocompleteDirectionsHandler.prototype.route = function() {
+
+
+
     if (!this.originPlaceId || !this.destinationPlaceId) {
         return;
+
+
+        var me = this;
+
+        this.directionsService.route({
+            origin: {'placeId': this.originPlaceId},
+            destination: {'placeId': this.destinationPlaceId},
+            travelMode: this.travelMode
+        }, function(response, status) {
+            if (status === 'OK') {
+                me.directionsDisplay.setDirections(response);
+
+                document.getElementById('esprit_userbundle_annonce_distance').value =
+                    response.routes[0].legs[0].distance.value/1000 + " Km";
+                calculePrix(response.routes[0].legs[0].distance.value/1000);
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
     }
     var me = this;
 
@@ -173,6 +250,8 @@ AutocompleteDirectionsHandler.prototype.route = function() {
 
             document.getElementById('esprit_userbundle_annonce_distance').value =
                 response.routes[0].legs[0].distance.value/1000 + " Km";
+            calculePrix(response.routes[0].legs[0].distance.value/1000);
+
         } else {
             window.alert('Directions request failed due to ' + status);
         }

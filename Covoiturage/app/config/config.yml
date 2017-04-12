@@ -80,3 +80,35 @@ fos_user:
     registration:
         confirmation:
             enabled: true
+nomaya_social:
+    buttons:
+        facebook:
+            url:            "http://www.covoituragetn.tn"
+            locale:         "fr_FR"
+            send:           false
+            width:          300
+            showFaces:      false
+            layout:         "button_count"
+        twitter:
+            url:            null
+            locale:         "fr"
+            message:        "Je veux partager ça avec vous"
+            text:           "Tweet"
+            via:            "covoiturageTN"
+            tag:            "covoiturageTN"
+        googleplus:
+            url:            null
+            locale :        "fr"
+            size :          "medium"
+            annotation :    "bubble"
+            width :         300
+        linkedin:
+            url:            null
+            locale:         "fr_FR"
+            counter:        "right"
+        pinterest:
+            url:            null
+    links:
+        facebook:           "https://www.facebook.com/KHStudiodev"
+        googleplus:         "https://plus.google.com/+khmaieshassen"
+    theme:                  'default' # optional

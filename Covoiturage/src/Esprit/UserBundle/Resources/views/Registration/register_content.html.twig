@@ -1,16 +1,75 @@
 {% trans_default_domain 'FOSUserBundle' %}
 <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
 <link href="{{ asset('RegistrationStyle/style.css') }}" />
+<link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css'>
+
+<link rel="stylesheet" href="{{ asset('LoginStyle/css/style.css') }}">
+<link href="{{ asset('materialize/css/materialize.css') }}" rel="stylesheet">
+
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 <fieldset>
+
+    <div class="row">
+        <div class="input-field col s12">
+            {{ form_label(form.nom) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            {{ form_widget(form.nom) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            {{ form_label(form.prenom) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            {{ form_widget(form.prenom) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field col s12">
 {{ form_label(form.username) }}
+        </div>
+    </div>
+            <div class="row">
+                <div class="input-field col s12">
 {{ form_widget(form.username) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
 {{ form_label(form.email) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
 {{ form_widget(form.email) }}
+            {{ form_errors(form.email) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
 {{ form_label(form.plainPassword.first) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
 {{ form_widget(form.plainPassword.first) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
 {{ form_label(form.plainPassword.second) }}
+        </div></div>
+    <div class="row">
+        <div class="input-field col s12">
  {{ form_widget(form.plainPassword.second) }}
+        </div></div>
+
     <div>
         <input type="submit" value="{{ 'registration.submit'|trans }}" />
     </div>

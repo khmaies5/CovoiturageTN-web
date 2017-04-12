@@ -3,6 +3,8 @@
 <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css'>
 
 <link rel="stylesheet" href="{{ asset('LoginStyle/css/style.css') }}">
+<link href="{{ asset('materialize/css/materialize.css') }}" rel="stylesheet">
+
 {% if error %}
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
@@ -15,14 +17,37 @@
 
         <input type="hidden" name="_target_path" value="/Client/check_action" />
         <h2 class="form-signin-heading">Please login</h2>
-        <label for="username">{{ 'security.login.username'|trans }}</label></br>
-        <input type="text" class="form-control"id="username" name="_username"  placeholder="Email Address"  value="{{ last_username }}" required="required" autofocus="" />
-        <label for="password">{{ 'security.login.password'|trans }}</label></br>
-        <input class="form-control"  placeholder="Password"  type="password" id="password" name="_password" required="required"/>
-        <label class="checkbox">
-            <input type="checkbox" id="remember_me" name="_remember_me" value="on" > Remember me
-        </label>
-        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="username" type="text" class="validate" id="username" name="_username"  value="{{ last_username }}" required="required" autofocus="">
+                <label for="username">{{ 'security.login.username'|trans }}</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password" type="password" class="validate" name="_password" required="required">
+                <label for="password">Password</label>
+            </div>
+        </div>
+
+        <p>
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" >
+
+            <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+        </p>
+        <!--<label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>-->
+
         <button class="btn btn-lg btn-primary btn-block" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}">Login</button>
+        <br>
+        <div class="row">
+            <label>don't have an account?</label>
+            <a href="{{ path('fos_user_registration_register') }}">Register</a>
+
+        </div>
     </form>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="{{ asset('materialize/js/materialize.js')}}"></script>
 </div>

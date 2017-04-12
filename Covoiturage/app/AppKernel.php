@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Esprit\UserBundle\EspritUserBundle(),
             new Esprit\AdminBundle\EspritAdminBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
 
         ];
 

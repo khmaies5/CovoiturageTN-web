@@ -24,7 +24,7 @@ class AnnonceType extends AbstractType
 
             // add a class that can be selected in JavaScript
             'attr' => ['class' => 'form-control'],
-        ))->add('lieuDepart')->add('lieuArrive')->add('nbrPersonne')->add('prix')->add('critere')->add('distance')       ;
+        ))->add('lieuDepart')->add('lieuArrive')->add('nbrPersonne')->add('prix')->add('critere')->add('distance')      ;
     }
     
     /**

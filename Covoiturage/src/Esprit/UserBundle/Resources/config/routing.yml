@@ -1,3 +1,7 @@
+esprit_user_annonce:
+    resource: "@EspritUserBundle/Resources/config/routing/annonce.yml"
+    prefix:   /annonce
+
 esprit_user_homepage:
     path:     /Home
     defaults: { _controller: EspritUserBundle:Default:index }

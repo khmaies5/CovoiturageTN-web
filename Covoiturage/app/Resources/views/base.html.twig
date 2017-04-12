@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}CovoiturageTN{% endblock %}</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
@@ -14,8 +14,9 @@
         <link href="{{ asset('FO/css/lightbox.css') }}" rel="stylesheet">
         <link href="{{ asset('FO/css/main.css') }}" rel="stylesheet">
         <link href="{{ asset('FO/css/responsive.css') }}" rel="stylesheet">
-
-       <link href="{{ asset('materialize/css/materialize.css') }}" rel="stylesheet">
+        <link href="http://materializecss.com/extras/noUiSlider/nouislider.css" rel="stylesheet">
+        <link href="{{ asset('materialize/css/bootstrap-datetimepicker.css') }}" rel="stylesheet">
+      <link href="{{ asset('materialize/css/materialize.css') }}" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="{{ asset('materialize/css/hover.css') }}" rel="stylesheet" media="all">
 
@@ -74,27 +75,35 @@
 
                             </ul>
                         </li>
-                        <li class="dropdown"><a href="{{ path('Proposer_Trajet_page')}}">Proposer un trajet</a>
+                        <li class="dropdown"><a href="{{ path('annonce_new')}}">Proposer un trajet</a>
 
                         </li>
-                        <li class="dropdown"><a href="{{ path('Les_Trajets_page')}}">Tous les trajets</a>
+                        <li class="dropdown"><a href="{{ path('annonce_index')}}">Tous les trajets</a>
 
                         </li>
                         <li class="dropdown"><a href="{{ path('Les_groupes_page')}}">Tous les groupes</a>
 
                         </li>
-                        <li class="dropdown"><a href="{{ path('profil_page')}}">Mon profil <i class="fa fa-angle-down"></i></a>
-                            <ul role="menu" class="sub-menu">
-                                <li><a href=" {{ path('profil_page')}}">Mon profil</a></li>
-                                <li><a href="{{ path('Mes_Annonces_page')}}">Mes annonces</a></li>
-                                <li><a href="{{ path('Mes_reservations_page')}}">Mes reservations</a></li>
-                                <li><a href="{{ path('Mes_Alertes_page')}}">Mes alertes</a></li>
-                                <li><a href="{{ path('Mes_groupes_page')}}">Mes groupes</a></li>
-                                <li><a href="{{ path('Mes_users_Fav_page')}}">Mes utilisateurs favoris</a></li>
-                                <li><a href="{{ path('Mes_pubs_Fav_page')}}">Mes publications favorites</a></li>
-                                <li><a href="{{ path('Mes_invitations_page')}}">Mes invitations</a></li>
-                            </ul>
-                        </li>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <li class="dropdown"><a href="{{ path('profil_page')}}">Mon profil <i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href=" {{ path('fos_user_profile_show')}}">Mon profil</a></li>
+                                    <li><a href="{{ path('mes_annonce')}}">Mes annonces</a></li>
+                                    <li><a href="{{ path('Mes_reservations_page')}}">Mes reservations</a></li>
+                                    <li><a href="{{ path('Mes_Alertes_page')}}">Mes alertes</a></li>
+                                    <li><a href="{{ path('Mes_groupes_page')}}">Mes groupes</a></li>
+                                    <li><a href="{{ path('Mes_users_Fav_page')}}">Mes utilisateurs favoris</a></li>
+                                    <li><a href="{{ path('Mes_pubs_Fav_page')}}">Mes publications favorites</a></li>
+                                    <li><a href="{{ path('Mes_invitations_page')}}">Mes invitations</a></li>
+                                    <li><a href="{{ path('fos_user_security_logout')}}">Logout</a></li>
+
+                                </ul>
+                            </li>
+                        {% else %}
+                        <li class="dropdown"><a href="{{ path('fos_user_security_login') }}">Login</a>
+
+                        {% endif %}
+
 
 
                     </ul>
@@ -191,8 +200,8 @@
     </footer>
     <!--/#footer-->
 
-    <script type="text/javascript" src="{{ asset('FO/js/bootstrap.min.js')}}'"></script>
-    <script type="text/javascript" src="{{ asset('FO/esprituser/js/lightbox.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('FO/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox.min.js"></script>
     <script type="text/javascript" src="{{ asset('FO/js/wow.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('FO/js/main.js')}}"></script>
 

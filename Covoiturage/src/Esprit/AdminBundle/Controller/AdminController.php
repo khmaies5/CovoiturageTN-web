@@ -8,6 +8,9 @@ class AdminController extends Controller
 {
     public function profilAction()
 {
+    if ($this->isGranted('ROLE_ADMIN') == false) {
+        return $this->redirectToRoute('profil_page');
+    }
     return $this->render('EspritAdminBundle:Profil:profil.html.twig');
 }
 

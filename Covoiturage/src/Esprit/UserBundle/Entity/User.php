@@ -19,6 +19,8 @@ class User extends BaseUser
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
+
+
     protected $id;
 
     /**
@@ -50,6 +52,8 @@ class User extends BaseUser
      * @ORM\Column(name="photo_profil", type="string", length=100, nullable=true)
      */
     private $photoProfil;
+
+
 
     /**
      * @var integer

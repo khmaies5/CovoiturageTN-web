@@ -1,21 +1,186 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Annonce edit</h1>
+<section id="page-breadcrumb">
+    <div class="vertical-center sun">
+        <div class="container">
+            <div class="row">
+                <div class="action">
+                    <div class="col-sm-12">
+                        <h1 class="title">Modifier Annonce</h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
 
-    <ul>
-        <li>
-            <a href="{{ path('annonce_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
+    <div class="row">
+        <div class="col s12">
+            {{ form_start(edit_form) }}
+            <div class="row">
+                <div class="input-field col s12">
+                    <div class="form-group">
+                        <div class="input-group date form_datetime" data-date=" {{ 'now'|date('Y-m-d H:i') }}" data-date-format="yyyy/mm/dd hh:ii" data-link-field="dtp_input1">
+                            {{ form_row(edit_form.tripDate)}}
+                            <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    {{ form_row(edit_form.lieuDepart,{'attr':{'placeholder':''}}) }}
+
+                </div>
+                <div class="input-field col s6">
+                    {{ form_row(edit_form.lieuArrive,{'attr':{'placeholder':''}}) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            {{ form_row(edit_form.distance,{'label':' ','attr':{'readonly':'true'}}) }}
+                        </div>
+                    </div>
+                    <div id="map" style="width: inherit; height: 300px"></div>
+                </div>
+            </div>
+            <div class="row">
+                <p class="range-field">
+                <div class="input-field col s6">
+
+                    {{ form_row(edit_form.nbrPersonne,{'type':'range','attr':{'min':'1','max':'4','id':'nbrPersonne','class':'active'}}) }}
+                </div>
+                <div class="input-field col s6">
+
+                    {{ form_row(edit_form.prix,{'type':'range','attr':{'min':'0.5','max':'80','step':'0.5','id':'nbrPersonne','class':'active'}}) }}
+                </div>
+                </p>
+
+            </div>
+            <div class="row">
+
+                <div class="col s3">
+                    <!-- Switch -->
+                    <label>Chitchat</label>
+
+                    <div class="switch">
+
+                        <label>
+                            oui
+                            <input type="checkbox" id="switch1">
+                            <span class="lever"></span>
+                            nn
+                        </label>
+
+                    </div>
+                </div>
+                <div class="col s3">
+                    <!-- Switch -->
+                    <label>Fumeur</label>
+
+                    <div class="switch">
+
+                        <label>
+                            oui
+                            <input type="checkbox" id="switch2">
+                            <span class="lever"></span>
+                            nn
+                        </label>
+
+                    </div>
+                </div>
+                <div class="col s3">
+                    <!-- Switch -->
+                    <label>Animaux</label>
+
+                    <div class="switch">
+
+                        <label>
+                            oui
+                            <input type="checkbox" id="switch3">
+                            <span class="lever"></span>
+                            nn
+                        </label>
+
+                    </div>
+                </div>
+                <div class="col s3">
+                    <!-- Switch -->
+                    <label>Music</label>
+
+                    <div class="switch" >
+
+                        <label>
+                            oui
+                            <input type="checkbox" id="switch4" value="test">
+                            <span class="lever"></span>
+                            nn
+                        </label>
+
+                    </div>
+                </div>
+
+            </div>
+
+            {{ form_row(edit_form.critere,{'type':'hidden','label':' '}) }}
+
+
+
+            <div class="row">
+                <div class="col s4 offset-s4">
+                    <button class="btn waves-effect waves-light" type="submit" name="action" onclick="testing()">submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+            {{ form_end(edit_form) }}
+
+
+        </div>
+    </div>
+
+
+
+            <div class="row">
+                <div class="col s4">
+                    <button class="btn waves-effect waves-light " onclick="window.location.href = '{{ path('annonce_index') }}'">Retoure
+                        <i class="material-icons right">fast_rewind</i>
+                    </button>
+
+                </div>
+                <div class="col s4 offset-s4">
+                    {{ form_start(delete_form) }}
+                    <button class="btn waves-effect waves-light" type="submit" name="action" onclick="testing()">Supprimer
+                        <i class="material-icons right">delete</i>
+                    </button>
+                    {{ form_end(delete_form) }}
+                </div>
+
+            </div>
+
+
+
+</div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="{{ asset('materialize/js/materialize.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('FO/js/moment.js')}}"></script>
+    <script src="http://materializecss.com/extras/noUiSlider/nouislider.js"></script>
+    <script type="text/javascript" src="{{ asset('materialize/js/bootstrap-datetimepicker.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('FO/js/annonce.js')}}"></script>
+
+    <script>
+
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKLbJ2jywYWHOrejkKEqRkzbu3HZseuqQ&libraries=places&callback=initMap"
+            async defer></script>
 {% endblock %}

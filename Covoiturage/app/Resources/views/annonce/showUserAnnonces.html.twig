@@ -1,14 +1,7 @@
 {% extends 'annonce/index.html.twig' %}
 {% block head %}
 
-    <style>
 
-
-        .gi-2x{font-size: 1em;}
-        .gi-3x{font-size: 3em;}
-        .gi-4x{font-size: 4em;}
-        .gi-5x{font-size: 5em;}
-    </style>
 {% endblock %}
 
 
@@ -20,14 +13,13 @@
                 <div class="row">
                     <div class="action">
                         <div class="col-sm-12">
-                            <h1 class="title">Covoiturage</h1>
+                            <h1 class="title">Mes Annonces</h1>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <section id="blog" class="padding-top">
         <div class="container">
             <div class="row">
@@ -49,24 +41,7 @@
 
                         </div>
 
-                        <div class="sidebar-item  recent">
-                            <h3>dernieres Annonces</h3>
-                            {% for annonce in allannonces %}
-                                {% if annonce.annonceDate > date('-1days') %}
-
-                            <div class="media">
-                                <div class="pull-left">
-                                    <a href="{{ path('annonce_show', { 'id': annonce.idAnnonce, 'veh': annonce.idUser}) }}"><img style="height: 50px;width: 50px" src="{{ asset('AnnonceImg/')}}{{ annonce.idUser.photoProfil }}" alt=""></a>
-                                </div>
-                                <div class="media-body">
-                                    <h4><a href="{{ path('annonce_show', { 'id': annonce.idAnnonce, 'veh': annonce.idUser}) }}">{{ annonce.lieuDepart  }}<span style="font-size: 80%;" class="glyphicon glyphicon-arrow-right gi-2x" aria-hidden="true"></span>{{ annonce.lieuArrive }}</a></h4>
-                                    <p>{{ annonce.tripDate |date("m/d/Y H:i") }}</p>
-                                </div>
-                            </div>
-                                {% endif %}
-                            {% endfor %}
-
-                        </div>                    </div>
+                    </div>
                 </div>
                 <div class="col-md-9 col-sm-7">
                     <div class="row">
@@ -146,19 +121,19 @@
                             <ul class="pagination pagination-sm">
                                 {# `«` arrow  #}
                                 <li {{ thisPage == 1 ? 'class="disabled"' }}>
-                                    <a href="{{ path('annonce_index', {page: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
+                                    <a href="{{ path('mes_annonce', {page: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
                                 </li>
 
                                 {# Render each page number #}
                                 {% for i in 1..maxPages %}
                                     <li {{ thisPage == i ? 'class="active"' }}>
-                                        <a href="{{ path('annonce_index', {page: i}) }}">{{ i }}</a>
+                                        <a href="{{ path('mes_annonce', {page: i}) }}">{{ i }}</a>
                                     </li>
                                 {% endfor %}
 
                                 {# `»` arrow #}
                                 <li {{ thisPage == maxPages ? 'class="disabled"' }}>
-                                    <a href="{{ path('annonce_index', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
+                                    <a href="{{ path('mes_annonce', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
                                 </li>
                             </ul>
                         {% endif %}
@@ -205,8 +180,7 @@
                 todayHighlight: 1,
                 startView: 2,
                 forceParse: 0,
-                showMeridian: 1,
-                clear: 1
+                showMeridian: 1
             });
         });
         $('[data-countdown]').each(function() {

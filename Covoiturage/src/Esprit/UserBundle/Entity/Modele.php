@@ -42,6 +42,70 @@ class Modele
      */
     private $nbrPlace;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getModele()
+    {
+        return $this->modele;
+    }
+
+    /**
+     * @param string $modele
+     */
+    public function setModele($modele)
+    {
+        $this->modele = $modele;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMarque()
+    {
+        return $this->marque;
+    }
+
+    /**
+     * @param string $marque
+     */
+    public function setMarque($marque)
+    {
+        $this->marque = $marque;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNbrPlace()
+    {
+        return $this->nbrPlace;
+    }
+
+    /**
+     * @param int $nbrPlace
+     */
+    public function setNbrPlace($nbrPlace)
+    {
+        $this->nbrPlace = $nbrPlace;
+    }
+
 
 }
 

@@ -1,0 +1,33 @@
+annonce_index:
+    path:     /page={page}
+    defaults:
+     _controller: EspritUserBundle:Annonce:ListTrajets
+     page:    1
+     methods:  GET
+
+mes_annonce:
+    path:     /mesannonces/page={page}
+    defaults:
+     _controller: EspritUserBundle:Annonce:MesAnnonce
+     page:    1
+     methods:  GET
+
+annonce_show:
+    path:     /{id}/{veh}/show
+    defaults: { _controller: EspritUserBundle:Annonce:show }
+    methods:  [GET, POST]
+
+annonce_new:
+    path:     /new
+    defaults: { _controller: EspritUserBundle:Annonce:new }
+    methods:  [GET, POST]
+
+annonce_edit:
+    path:     /{id}/edit
+    defaults: { _controller: EspritUserBundle:Annonce:edit }
+    methods:  [GET, POST]
+
+annonce_delete:
+    path:     /{id}/delete
+    defaults: { _controller: EspritUserBundle:Annonce:delete }
+    methods:  DELETE
